@@ -127,4 +127,55 @@ class BinarySearchTree {
     }
     return this.left._findMin();
   }
+
+  dfsInOrder(values = []) {
+    // first, process left node recursively
+    if (this.left) {
+      values = this.left.dfsInOrder(values);
+    }
+
+    // next, process current node
+    values.push(this.value);
+
+    // finally, process right node recursively
+    if (this.right) {
+      values = this.right.dfsInOrder(values);
+    }
+
+    return values;
+  }
+
+  dfsPreOrder(values = []) {
+    // first, process current node
+    values.push(this.value);
+
+    // next, process left node recursively
+    if (this.left) {
+      values = this.left.dfsPreOrder(values);
+    }
+
+    // finally, process right node recursively
+    if (this.right) {
+      values = this.right.dfsPreOrder(values);
+    }
+
+    return values;
+  }
+
+  dfsPostOrder(values = []) {
+    // first, process left node recursively
+    if (this.left) {
+      values = this.left.dfsPostOrder(values);
+    }
+
+    // next, process right node recursively
+    if (this.right) {
+      values = this.right.dfsPostOrder(values);
+    }
+
+    // finally, process current node
+    values.push(this.value);
+
+    return values;
+  }
 }
